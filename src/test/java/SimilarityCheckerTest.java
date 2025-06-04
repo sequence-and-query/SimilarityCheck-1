@@ -13,8 +13,8 @@ class SimilarityCheckerTest {
 
     @Test
     public void stringLengthChecker() {
-        String str1 = "Hello";
-        String str2 = "World";
+        String str1 = "HELLO";
+        String str2 = "WORLD";
 
         int expected = 60;
         int actual = similarityChecker.calculateLengthScore(str1, str2);
@@ -24,8 +24,8 @@ class SimilarityCheckerTest {
 
     @Test
     public void stringLengthCheckerWithZero() {
-        String str1 = "Hello";
-        String str2 = "HelloMyNameIs";
+        String str1 = "HELLO";
+        String str2 = "HELLOMYNAMEIS";
 
         int expected = 0;
         int actual = similarityChecker.calculateLengthScore(str1, str2);
@@ -35,10 +35,10 @@ class SimilarityCheckerTest {
 
     @Test
     public void stringLengthCheckerWithNonzero() {
-        String str1 = "Hello";
-        String str2 = "World!";
+        String str1 = "HELLO";
+        String str2 = "GOODBYE";
 
-        int expected = 48;
+        int expected = 36;
         int actual = similarityChecker.calculateLengthScore(str1, str2);
 
         assertEquals(expected, actual);

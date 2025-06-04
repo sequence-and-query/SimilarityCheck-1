@@ -1,5 +1,6 @@
 public class SimilarityChecker {
     public static final int MAX_LENGTH_SCORE = 60;
+    public static final int ZERO_SCORE = 0;
 
     public int calculateLengthScore(String str1, String str2) {
         if(str1.length() == str2.length()) {
@@ -7,7 +8,7 @@ public class SimilarityChecker {
         }
 
         if(isOneStringLengthDoubleThanOther(str1, str2)) {
-            return 0;
+            return ZERO_SCORE;
         }
 
         int gap = getDiffOfLength(str1, str2);
@@ -17,7 +18,7 @@ public class SimilarityChecker {
     }
 
     private boolean isOneStringLengthDoubleThanOther(String str1, String str2) {
-        if(str1.length() > str2.length()) {
+        if(str1.length() == Math.max(str1.length(), str2.length())) {
             return str1.length() >= 2 * str2.length();
         }
         else{
@@ -26,7 +27,7 @@ public class SimilarityChecker {
     }
 
     private int getDiffOfLength(String str1, String str2) {
-        if(str1.length() > str2.length()) {
+        if(str1.length() == Math.max(str1.length(), str2.length())) {
             return str1.length() - str2.length();
         }
         else{
@@ -35,11 +36,6 @@ public class SimilarityChecker {
     }
 
     private int getShortLength(String str1, String str2) {
-        if(str1.length() > str2.length()) {
-            return str2.length();
-        }
-        else{
-            return str1.length();
-        }
+        return Math.min(str1.length(), str2.length());
     }
 }
