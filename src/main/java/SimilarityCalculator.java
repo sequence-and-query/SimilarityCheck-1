@@ -3,14 +3,41 @@ public class SimilarityCalculator {
         if(str1.length() == str2.length()) {
             return 60;
         }
-        return 0;
+
+        if(isOneStringLengthDoubleThanOther(str1, str2)) {
+            return 0;
+        }
+
+        int gap = getDiffOfLength(str1, str2);
+        int shortLength = getShortLength(str1, str2);
+
+        return (int) ((1 - (double)gap / shortLength) * 60);
     }
 
-    private int getLongLength(String str1, String str2) {
-        return str1.length() > str2.length() ? str1.length() : str2.length();
+    private boolean isOneStringLengthDoubleThanOther(String str1, String str2) {
+        if(str1.length() > str2.length()) {
+            return str1.length() >= 2 * str2.length();
+        }
+        else{
+            return str2.length() >= 2 * str1.length();
+        }
+    }
+
+    private int getDiffOfLength(String str1, String str2) {
+        if(str1.length() > str2.length()) {
+            return str1.length() - str2.length();
+        }
+        else{
+            return str2.length() - str1.length();
+        }
     }
 
     private int getShortLength(String str1, String str2) {
-        return str1.length() > str2.length() ? str2.length() : str1.length();
+        if(str1.length() > str2.length()) {
+            return str2.length();
+        }
+        else{
+            return str1.length();
+        }
     }
 }
