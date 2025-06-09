@@ -18,7 +18,7 @@ public class SimilarityChecker {
     }
 
     private boolean isOneStringLengthDoubleThanOther(String str1, String str2) {
-        if(str1.length() == Math.max(str1.length(), str2.length())) {
+        if(str1.length() > str2.length()) {
             return str1.length() >= 2 * str2.length();
         }
         else{
@@ -27,7 +27,7 @@ public class SimilarityChecker {
     }
 
     private int getDiffOfLength(String str1, String str2) {
-        if(str1.length() == Math.max(str1.length(), str2.length())) {
+        if(str1.length() > str2.length()) {
             return str1.length() - str2.length();
         }
         else{
@@ -36,6 +36,6 @@ public class SimilarityChecker {
     }
 
     private int getShortLength(String str1, String str2) {
-        return Math.min(str1.length(), str2.length());
+        return str1.length() > str2.length() ? str2.length() : str1.length();
     }
 }
